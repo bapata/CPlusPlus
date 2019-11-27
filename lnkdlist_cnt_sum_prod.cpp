@@ -4,8 +4,6 @@
 //            +----+   +----+   +----+
 //front_ptr ->| dn +-->| d2 +-->| d1 +-->NULL
 //            +----+   +----+   +----+
-// Walk the list recursively to print count, sum and product. 
-
 using namespace std;
 
 typedef int my_data_type ;
@@ -55,16 +53,54 @@ int sum_of_data(Node *head_ptr) {
 }
 
 
-// recursively multiply contents of nodes
+// recursively multiple contents of nodes
 int prod_of_data(Node *head_ptr) {
-  if (head_ptr ==NULL) { // no node
+  if (head_ptr ==NULL) {
     return 0;
-  } else if (head_ptr->next_node == NULL) {  // one node
+  } else if (head_ptr->next_node == NULL) {
       return head_ptr->data;
-  } else { // more than one node
+  } else {
     return (head_ptr->data * prod_of_data(head_ptr->next_node));
   }
   // we should never come here
+}
+
+// helper function for use by max_in_the_list
+int max_of_two(int x,int y) {
+  if (x>y) {
+    return x;
+  }
+  return y;
+}
+
+// recursively find max in the list
+int max_in_the_list(Node *head_ptr) {
+  if (head_ptr==NULL) {
+    return 0;
+  } else if (head_ptr->next_node==NULL) {
+    return head_ptr->data;
+  } else {
+    return max_of_two(head_ptr->data,max_in_the_list(head_ptr->next_node));
+  }
+}
+
+// helper function for use by min_in_the_list
+int min_of_two(int x,int y) {
+  if (x<y) {
+    return x;
+  }
+  return y;
+}
+
+// recursively find min in the list
+int min_in_the_list(Node *head_ptr) {
+  if (head_ptr==NULL) {
+    return 0;
+  } else if (head_ptr->next_node==NULL) {
+    return head_ptr->data;
+  } else {
+    return min_of_two(head_ptr->data,min_in_the_list(head_ptr->next_node));
+  }
 }
 
 // Construct and walk linked-list.
@@ -95,6 +131,10 @@ int main(int argc, char **argv) {
   cout << "\nSUM:" << sum_of_data(front_ptr) << " " << endl;
   // Walk and print product
   cout << "\nPRODUCT:" << prod_of_data(front_ptr) << " " << endl;
+  // Walk and print max
+  cout << "\nMAX = " << max_in_the_list(front_ptr) << endl;
+  // Walk and print min
+  cout << "\nMIN = " << min_in_the_list(front_ptr) << endl;
 
   // we are not releasing any memory, front_ptr will still points to front of the list
   cout << endl;
