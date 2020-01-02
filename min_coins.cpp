@@ -12,11 +12,6 @@ typedef struct tagCoin {
   string cent_str;
 } Coin;
 
-map<char, Coin> m = { {'Q',{25, "quarters"} },
-                      {'D',{10, "dimes"}    },
-                      {'N',{5, "nickels"}   },
-                      {'P',{1, "pennis"}   }
-                    };
 
 map<char,int> get_coin_count(int value_in_cents) {
   map<char,int> ret_val;
@@ -52,6 +47,11 @@ map<char,int> get_coin_count(int value_in_cents) {
 }
 
 int main(int argc,char **argv) {
+  map<char, Coin> m = { {'Q',{25, "quarters"} },
+                        {'D',{10, "dimes"}    },
+                        {'N',{5, "nickels"}   },
+                        {'P',{1, "pennis"}   }
+                      };
   if(argc!=2) {
     cout << "\nUSAGE: <this-script> <cents>\n";
     exit(0);
@@ -60,6 +60,6 @@ int main(int argc,char **argv) {
   int value_in_cents = atoi(argv[1]);
   map<char,int> coin_count = get_coin_count(value_in_cents);
   for (map<char, int>::iterator it = coin_count.begin(); it != coin_count.end(); it++) {
-    cout << it->first << ":" << it->second << endl;
+    cout << m[it->first].cent_str << ":" << it->second << endl;
   }
 }
