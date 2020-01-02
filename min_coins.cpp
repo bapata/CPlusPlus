@@ -2,6 +2,9 @@
 #include <map>
 #include <string>
 
+// program to calculate minimum number of coins required
+// compile as g++ -std=c++2a min_coins.cpp
+
 using namespace std;
 
 typedef struct tagCoin {
