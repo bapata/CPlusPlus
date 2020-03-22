@@ -14,3 +14,7 @@ int main() {
   };
   return 0;
 }
+
+bool is_valid_node_groups(map<string, vector<string> > in_node_groups) {
+  // fill here
+}
