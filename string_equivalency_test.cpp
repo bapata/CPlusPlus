@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-// Compare 2 strings. Delete char when you encounter '#'
+// Compare 2 strings. Delete char before '#' when you encounter '#'
 // 'a#b#' and 'ab##' are equivalent
 // 'bac#' and 'bab#' are equivalent
 
