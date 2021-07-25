@@ -26,3 +26,9 @@ int main(void) {
   myentry.myid=3.14159;
   cout << get<double>(myentry.myid) << endl;
 }
+
+// Output:
+//42
+//test string1
+//test string2
+//3.14159
